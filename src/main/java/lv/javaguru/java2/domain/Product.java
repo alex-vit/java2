@@ -1,5 +1,7 @@
 package lv.javaguru.java2.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import lv.javaguru.java2.crossdomain.StatisticLine;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -19,39 +21,55 @@ public class Product implements BaseEntity {
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
+    @Setter
     private long id;
+
     @Column(name = "category_id")
+    @Getter
+    @Setter
     private long categoryId;
+
     @Column(name = "name")
+    @Getter
+    @Setter
     private String name;
+
     @Column(name = "description")
+    @Getter
+    @Setter
     private String description;
+
     @Column(name = "price")
+    @Getter
+    @Setter
     private long price;
+
     @Column(name = "imgurl")
+    @Getter
+    @Setter
     private String imgUrl;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @Fetch(value = FetchMode.SUBSELECT)
     @JoinColumn(name = "product_id")
+    @Getter
+    @Setter
     private List<Stock> stockList = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "product_id")
+    @Getter
+    @Setter
     private List<Review> reviews = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.JOIN)
     @PrimaryKeyJoinColumn
+    @Getter
+    @Setter
     private StatisticLine productStatisticLine;
 
-    public List<Stock> getStockList() {
-        return stockList;
-    }
-
-    public void setStockList(List<Stock> stockList) {
-        this.stockList = stockList;
-    }
 
     public List<Stock> getFresh() {
         Date today = new Date();
@@ -62,82 +80,12 @@ public class Product implements BaseEntity {
                 .collect(Collectors.toList());
         return fresh;
     }
-
     public int getFreshStockQuantity() {
         int quantity = 0;
         for (Stock stock : getFresh()) {
             quantity += stock.getQuantity();
         }
         return quantity;
-    }
-
-    public List<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
-    }
-
-    public StatisticLine getProductStatisticLine() {
-        return productStatisticLine;
-    }
-
-    public void setProductStatisticLine(StatisticLine productStatisticLine) {
-        this.productStatisticLine = productStatisticLine;
-    }
-
-    @Override
-    public long getId() {
-        return id;
-    }
-    @Override
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getCategoryID() {
-        return categoryId;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public long getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(long categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public long getPrice() {
-        return price;
-    }
-
-    public void setPrice(long price) {
-        this.price = price;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
     }
 
     @Override

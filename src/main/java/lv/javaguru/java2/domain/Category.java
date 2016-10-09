@@ -1,6 +1,8 @@
 
 package lv.javaguru.java2.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -13,42 +15,19 @@ public class Category implements BaseEntity {
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
+    @Setter
     private long id;
 
     @Column(name = "name")
-
+    @Getter
+    @Setter
     private String name;
 
     @Column(name = "father_id")
-
+    @Getter
+    @Setter
     private long fatherId;
-
-    public Category() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getFatherId() {
-        return fatherId;
-    }
-
-    public void setFatherId(long fatherId) {
-        this.fatherId = fatherId;
-    }
 
     @Override
     public String toString() {
@@ -60,16 +39,15 @@ public class Category implements BaseEntity {
         if (this == object) {
             return true;
         }
-
         if ((object == null) || !(object instanceof Category)) {
             return false;
         }
 
         Category that = (Category) object;
-
         return new EqualsBuilder()
                 .append(id, that.getId())
                 .append(name, that.getName())
+                .append(fatherId, that.getFatherId())
                 .isEquals();
     }
 

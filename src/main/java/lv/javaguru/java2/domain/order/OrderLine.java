@@ -1,5 +1,7 @@
 package lv.javaguru.java2.domain.order;
 
+import lombok.Getter;
+import lombok.Setter;
 import lv.javaguru.java2.domain.BaseEntity;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
@@ -10,92 +12,50 @@ import java.util.Date;
 @Entity
 @Table(name = "order_lines")
 public class OrderLine implements BaseEntity {
-    @Column(name = "id")
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    @Getter
+    @Setter
     private long id;
 
+    @Getter
+    @Setter
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
+
     @Column(name = "product_id")
+    @Getter
+    @Setter
     private long productId;
+
     @Column(name = "name")
+    @Getter
+    @Setter
     private String name;
+
     @Column(name = "description")
+    @Getter
+    @Setter
     private String description;
+
     @Column(name = "price")
+    @Getter
+    @Setter
     private long price;
+
     @Column(name = "quantity")
+    @Getter
+    @Setter
     private long quantity;
 
     @Column(name = "expire_date")
     @Temporal(TemporalType.DATE)
+    @Getter
+    @Setter
     private Date expireDate;
-
-    public Order getOrder() {
-        return this.order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public long getPrice() {
-        return price;
-    }
-
-    public void setPrice(long price) {
-        this.price = price;
-    }
-
-    public long getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(long quantity) {
-        this.quantity = quantity;
-    }
-
-    public Date getExpireDate() {
-        return expireDate;
-    }
-
-    public void setExpireDate(Date expireDate) {
-        this.expireDate = expireDate;
-    }
 
     @Override
     public boolean equals(Object object) {
@@ -106,6 +66,7 @@ public class OrderLine implements BaseEntity {
         return new EqualsBuilder()
                 .append(this.getId(), other.getId())
                 .append(this.getProductId(), other.getProductId())
+                //.append(this.getOrderId(), other.getOrderId())
                 .append(this.getName(), other.getName())
                 .append(this.getDescription(), other.getDescription())
                 .append(this.getPrice(), other.getPrice())
@@ -129,7 +90,7 @@ public class OrderLine implements BaseEntity {
     public String toString() {
         return "OrderLine{" +
                 "id=" + id +
-                ", order=" + order +
+                //", orderId=" + orderId +
                 ", productId=" + productId +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

@@ -1,5 +1,7 @@
 package lv.javaguru.java2.domain.order;
 
+import lombok.Getter;
+import lombok.Setter;
 import lv.javaguru.java2.domain.BaseEntity;
 import lv.javaguru.java2.domain.interfaces.LockedResource;
 
@@ -21,140 +23,69 @@ public class Order implements BaseEntity, LockedResource {
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
+    @Setter
     private long id;
 
     @Column(name = "person")
+    @Getter
+    @Setter
     private String person;
 
     @Column(name = "document")
+    @Getter
+    @Setter
     private String document;
 
     @Column(name = "address")
+    @Getter
+    @Setter
     private String address;
 
     @Column(name = "phone")
+    @Getter
+    @Setter
     private String phone;
 
     @Column(name = "order_date")
+    @Getter
+    @Setter
     @Temporal(TemporalType.DATE)
     private Date orderDate;
 
     @Column(name = "delivery_date")
+    @Getter
+    @Setter
     @Temporal(TemporalType.DATE)
     private Date deliveryDate;
 
     @Column(name = "total")
+    @Getter
+    @Setter
     private long total;
 
     @Column(name = "user_id")
+    @Getter
+    @Setter
     private long userId;
 
     @Column(name = "security_key")
+    @Getter
+    @Setter
     private String securityKey;
 
-    @Column(name = "status")
-    private String status;
-
+    @Getter
+    @Setter
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderLine> orderLines = new ArrayList<>();
 
-    public List<OrderLine> getOrderLines() {
-        return this.orderLines;
-    }
-
-    public void setOrderLines(List<OrderLine> orderLines) {
-        this.orderLines = orderLines;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getPerson() {
-        return person;
-    }
-
-    public void setPerson(String person) {
-        this.person = person;
-    }
-
-    public String getDocument() {
-        return document;
-    }
-
-    public void setDocument(String document) {
-        this.document = document;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Date getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public Date getDeliveryDate() {
-        return deliveryDate;
-    }
-
-    public void setDeliveryDate(Date deliveryDate) {
-        this.deliveryDate = deliveryDate;
-    }
-
-    public long getTotal() {
-        return total;
-    }
-
-    public void setTotal(long total) {
-        this.total = total;
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public String getSecurityKey() {
-        return securityKey;
-    }
-
-    public void setSecurityKey(String securityKey) {
-        this.securityKey = securityKey;
-    }
-
+    @Column(name = "status")
+    private String status;
     public String getStatus() {
         return status;
     }
-
     public void setStatus(boolean isDone){
-        if(isDone)
-            this.status = DONE;
-        else
-            this.status = IN_PROGRESS;
+        this.status = isDone ? DONE : IN_PROGRESS;
     }
 
     @Override

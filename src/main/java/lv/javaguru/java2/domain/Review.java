@@ -1,5 +1,7 @@
 package lv.javaguru.java2.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -13,71 +15,35 @@ public class Review implements BaseEntity {
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public long id;
+    @Getter
+    @Setter
+    private long id;
 
     @Column(name = "user_id")
-    public long userId;
+    @Getter
+    @Setter
+    private long userId;
 
     @Column(name = "product_id")
-    public long productId;
+    @Getter
+    @Setter
+    private long productId;
 
     @Column(name = "review")
-    public String review;
+    @Getter
+    @Setter
+    private String review;
 
     @Column(name = "user_name")
-    public String userName;
+    @Getter
+    @Setter
+    private String userName;
 
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
-    public Date date;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
-
-    public String getReview() {
-        return review;
-    }
-
-    public void setReview(String comment) {
-        this.review = comment;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+    @Getter
+    @Setter
+    private Date date;
 
     @Override
     public String toString() {
@@ -93,18 +59,17 @@ public class Review implements BaseEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         Review review = (Review) o;
-
         return new EqualsBuilder()
-                .append(id, review.id)
-                .append(userId, review.userId)
-                .append(productId, review.productId)
-                .append(this.review, review.review)
-                .append(userName, review.userName)
-                .append(date, review.date)
+                .append(id, review.getId())
+                .append(userId, review.getUserId())
+                .append(productId, review.getProductId())
+                .append(this.review, review.getReview())
+                .append(userName, review.getUserName())
+                .append(date, review.getDate())
                 .isEquals();
     }
 

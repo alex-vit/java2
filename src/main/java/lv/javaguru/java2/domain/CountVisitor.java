@@ -1,5 +1,7 @@
 package lv.javaguru.java2.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -12,54 +14,25 @@ public class CountVisitor implements BaseEntity, CountEntity {
     @Column(name="id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
+    @Setter
     private long id;
 
     @Column(name="product_id")
+    @Getter
+    @Setter
     private long productId;
 
     @Column(name="counter")
+    @Getter
+    @Setter
     private int counter;
 
     @Column(name = "ip")
+    @Getter
+    @Setter
     private String ip;
 
-    public CountVisitor(){
-
-    }
-
-    @Override
-    public long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
-
-    public int getCounter() {
-        return counter;
-    }
-
-    public void setCounter(int counter) {
-        this.counter = counter;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -70,10 +43,10 @@ public class CountVisitor implements BaseEntity, CountEntity {
         CountVisitor that = (CountVisitor) o;
 
         return new EqualsBuilder()
-                .append(id, that.id)
-                .append(productId, that.productId)
-                .append(counter, that.counter)
-                .append(ip, that.ip)
+                .append(id, that.getId())
+                .append(productId, that.getProductId())
+                .append(counter, that.getCounter())
+                .append(ip, that.getIp())
                 .isEquals();
     }
 

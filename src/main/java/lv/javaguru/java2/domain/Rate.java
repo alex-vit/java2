@@ -1,5 +1,7 @@
 package lv.javaguru.java2.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -12,48 +14,24 @@ public class Rate implements BaseEntity {
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
+    @Setter
     private long id;
 
     @Column(name = "user_id")
+    @Getter
+    @Setter
     private long userId;
 
     @Column(name = "product_id")
+    @Getter
+    @Setter
     private long productId;
 
     @Column(name = "rate")
+    @Getter
+    @Setter
     private int rate;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
-
-    public int getRate() {
-        return rate;
-    }
-
-    public void setRate(int rate) {
-        this.rate = rate;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -64,10 +42,10 @@ public class Rate implements BaseEntity {
         Rate rate1 = (Rate) o;
 
         return new EqualsBuilder()
-                .append(id, rate1.id)
-                .append(userId, rate1.userId)
-                .append(productId, rate1.productId)
-                .append(rate, rate1.rate)
+                .append(id, rate1.getId())
+                .append(userId, rate1.getUserId())
+                .append(productId, rate1.getProductId())
+                .append(rate, rate1.getRate())
                 .isEquals();
     }
 

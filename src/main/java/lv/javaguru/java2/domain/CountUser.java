@@ -1,5 +1,7 @@
 package lv.javaguru.java2.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -12,52 +14,25 @@ public class CountUser implements BaseEntity, CountEntity {
     @Column(name="id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
+    @Setter
     private long id;
 
     @Column(name = "user_id")
+    @Getter
+    @Setter
     private long userId;
 
     @Column(name="product_id")
+    @Getter
+    @Setter
     private long productId;
 
     @Column(name="counter")
+    @Getter
+    @Setter
     private int counter;
 
-    public CountUser(){
-
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
-
-    public int getCounter() {
-        return counter;
-    }
-
-    public void setCounter(int counter) {
-        this.counter = counter;
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -68,10 +43,10 @@ public class CountUser implements BaseEntity, CountEntity {
         CountUser countUser = (CountUser) o;
 
         return new EqualsBuilder()
-                .append(id, countUser.id)
-                .append(userId, countUser.userId)
-                .append(productId, countUser.productId)
-                .append(counter, countUser.counter)
+                .append(id, countUser.getId())
+                .append(userId, countUser.getUserId())
+                .append(productId, countUser.getProductId())
+                .append(counter, countUser.getCounter())
                 .isEquals();
     }
 
