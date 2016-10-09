@@ -8,6 +8,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "categories")
 public class Category implements BaseEntity {
@@ -15,18 +17,12 @@ public class Category implements BaseEntity {
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
     private long id;
 
     @Column(name = "name")
-    @Getter
-    @Setter
     private String name;
 
     @Column(name = "father_id")
-    @Getter
-    @Setter
     private long fatherId;
 
     @Override

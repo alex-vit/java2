@@ -8,6 +8,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import javax.persistence.*;
 import java.util.Date;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "reviews")
 public class Review implements BaseEntity {
@@ -15,34 +17,22 @@ public class Review implements BaseEntity {
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
     private long id;
 
     @Column(name = "user_id")
-    @Getter
-    @Setter
     private long userId;
 
     @Column(name = "product_id")
-    @Getter
-    @Setter
     private long productId;
 
     @Column(name = "review")
-    @Getter
-    @Setter
     private String review;
 
     @Column(name = "user_name")
-    @Getter
-    @Setter
     private String userName;
 
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
-    @Getter
-    @Setter
     private Date date;
 
     @Override

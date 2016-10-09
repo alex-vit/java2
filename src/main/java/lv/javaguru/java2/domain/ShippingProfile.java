@@ -6,6 +6,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "shipping_profiles")
 public class ShippingProfile implements BaseEntity {
@@ -13,33 +15,21 @@ public class ShippingProfile implements BaseEntity {
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
     private long id;
 
     @Column(name = "user_id")
-    @Getter
-    @Setter
     private long userId;
 
     @Column(name = "person")
-    @Getter
-    @Setter
     private String person;
 
     @Column(name = "document")
-    @Getter
-    @Setter
     private String document;
 
     @Column(name = "address")
-    @Getter
-    @Setter
     private String address;
 
     @Column(name = "phone")
-    @Getter
-    @Setter
     private String phone;
 
     @Override

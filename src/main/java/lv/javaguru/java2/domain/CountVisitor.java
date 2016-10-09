@@ -7,6 +7,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "visitors_counter")
 public class CountVisitor implements BaseEntity, CountEntity {
@@ -14,23 +16,15 @@ public class CountVisitor implements BaseEntity, CountEntity {
     @Column(name="id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
     private long id;
 
     @Column(name="product_id")
-    @Getter
-    @Setter
     private long productId;
 
     @Column(name="counter")
-    @Getter
-    @Setter
     private int counter;
 
     @Column(name = "ip")
-    @Getter
-    @Setter
     private String ip;
 
 

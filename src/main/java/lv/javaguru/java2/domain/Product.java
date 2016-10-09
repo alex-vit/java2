@@ -14,6 +14,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "products")
 public class Product implements BaseEntity {
@@ -21,53 +23,35 @@ public class Product implements BaseEntity {
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
     private long id;
 
     @Column(name = "category_id")
-    @Getter
-    @Setter
     private long categoryId;
 
     @Column(name = "name")
-    @Getter
-    @Setter
     private String name;
 
     @Column(name = "description")
-    @Getter
-    @Setter
     private String description;
 
     @Column(name = "price")
-    @Getter
-    @Setter
     private long price;
 
     @Column(name = "imgurl")
-    @Getter
-    @Setter
     private String imgUrl;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @Fetch(value = FetchMode.SUBSELECT)
     @JoinColumn(name = "product_id")
-    @Getter
-    @Setter
     private List<Stock> stockList = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "product_id")
-    @Getter
-    @Setter
     private List<Review> reviews = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.JOIN)
     @PrimaryKeyJoinColumn
-    @Getter
-    @Setter
     private StatisticLine productStatisticLine;
 
 

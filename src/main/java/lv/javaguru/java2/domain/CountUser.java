@@ -7,6 +7,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "users_counter")
 public class CountUser implements BaseEntity, CountEntity {
@@ -14,25 +16,16 @@ public class CountUser implements BaseEntity, CountEntity {
     @Column(name="id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
     private long id;
 
     @Column(name = "user_id")
-    @Getter
-    @Setter
     private long userId;
 
     @Column(name="product_id")
-    @Getter
-    @Setter
     private long productId;
 
     @Column(name="counter")
-    @Getter
-    @Setter
     private int counter;
-
 
     @Override
     public boolean equals(Object o) {

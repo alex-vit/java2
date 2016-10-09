@@ -7,38 +7,26 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
+@Getter
+@Setter
 public class User implements BaseEntity {
 
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
     private long id;
 
-    @Getter
-    @Setter
     @Column(name = "name")
     private String fullName;
 
-    @Getter
-    @Setter
     @Column(name = "email")
     private String email;
 
-    @Getter
-    @Setter
     @Column(name = "password")
     private String password;
 
-    @Getter
-    @Setter
     @Column(name = "is_admin")
     private boolean isAdmin;
-
-    public User() {
-
-    }
 
     @Override
     public boolean equals(Object o) {

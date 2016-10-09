@@ -8,7 +8,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import javax.persistence.*;
 import java.util.Date;
 
-
+@Getter
+@Setter
 @Entity
 @Table(name = "order_lines")
 public class OrderLine implements BaseEntity {
@@ -16,45 +17,30 @@ public class OrderLine implements BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    @Getter
-    @Setter
+
     private long id;
 
-    @Getter
-    @Setter
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
 
     @Column(name = "product_id")
-    @Getter
-    @Setter
     private long productId;
 
     @Column(name = "name")
-    @Getter
-    @Setter
     private String name;
 
     @Column(name = "description")
-    @Getter
-    @Setter
     private String description;
 
     @Column(name = "price")
-    @Getter
-    @Setter
     private long price;
 
     @Column(name = "quantity")
-    @Getter
-    @Setter
     private long quantity;
 
     @Column(name = "expire_date")
     @Temporal(TemporalType.DATE)
-    @Getter
-    @Setter
     private Date expireDate;
 
     @Override

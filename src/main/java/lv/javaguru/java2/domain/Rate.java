@@ -7,6 +7,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "rate")
 public class Rate implements BaseEntity {
@@ -14,23 +16,15 @@ public class Rate implements BaseEntity {
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
     private long id;
 
     @Column(name = "user_id")
-    @Getter
-    @Setter
     private long userId;
 
     @Column(name = "product_id")
-    @Getter
-    @Setter
     private long productId;
 
     @Column(name = "rate")
-    @Getter
-    @Setter
     private int rate;
 
     @Override
