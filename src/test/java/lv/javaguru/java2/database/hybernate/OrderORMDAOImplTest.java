@@ -196,14 +196,13 @@ public class OrderORMDAOImplTest extends CrudDAOTest<Order, OrderORMDAOImpl> {
     @Test
     public void getAllOrderLinesByOrderId(){
         Order order = objectCreator.createOrderWithTwoOrderLineStatusFalse();
-        List<Order> orderList = orderDAO.getAllOrderLinesByOrderId(order.getId());
-        assertEquals(2, orderList.size());
-        List<OrderLine> orderLineList = orderList.get(0).getOrderLines();
+        List<OrderLine> orderLineList = order.getOrderLines();
         assertEquals(2, orderLineList.size());
+        
         for(OrderLine line : orderLineList){
             assertEquals(order.getId(), line.getOrder().getId());
-            System.out.println(line);
-
         }
+
+
     }
 }

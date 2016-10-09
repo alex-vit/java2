@@ -11,7 +11,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "order")
 @Entity
 @Table(name = "order_lines")
 public class OrderLine implements BaseEntity {

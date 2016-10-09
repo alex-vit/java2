@@ -14,35 +14,30 @@ import java.util.Random;
 @Component
 public class ObjectCreator {
 
+    @Autowired
+    OrderLineDAO orderLineDAO;
     @Qualifier("ORM_ProductDAO")
     @Autowired
     private ProductDAO productDAO;
-
     @Qualifier("ORM_CategoryDAO")
     @Autowired
     private CategoryDAO categoryDAO;
-
     @Qualifier("ORM_UserDAO")
     @Autowired
     private UserDAO userDAO;
-
     @Autowired
     private StockDAO stockDAO;
-
     @Autowired
     private ReviewDAO reviewDAO;
-
     @Autowired
     private OrderDAO orderDAO;
-
-    @Autowired OrderLineDAO orderLineDAO;
-
     private Random random = new Random();
     private Date today = new Date();
 
     long createCategory(){
         Category category = new Category();
         category.setName("category");
+        category.setFatherId(1);
         return categoryDAO.create(category);
     }
 
@@ -101,6 +96,7 @@ public class ObjectCreator {
 
     Order createOrderWithTwoOrderLineStatusFalse(){
         Order order = createOrder(false);
+
         Stock stock = createStock();
         Product product = productDAO.getById(stock.getProductId());
 
@@ -112,7 +108,7 @@ public class ObjectCreator {
         orderLine.setPrice(product.getPrice());
         orderLine.setQuantity(stock.getQuantity());
         orderLine.setExpireDate(stock.getExpireDate());
-        orderLineDAO.create(orderLine);
+        order.getOrderLines().add(orderLine);
 
         OrderLine other = new OrderLine();
         other.setOrder(order);
@@ -122,8 +118,9 @@ public class ObjectCreator {
         other.setPrice(product.getPrice());
         other.setQuantity(stock.getQuantity());
         other.setExpireDate(stock.getExpireDate());
-        orderLineDAO.create(other);
+        order.getOrderLines().add(other);
 
+        orderDAO.update(order);
         return order;
     }
 }
