@@ -74,7 +74,6 @@ public class Cart {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-
         stringBuilder.append(String.format("%s {%n", this.getClass().getSimpleName()));
         for (Map.Entry<Product, Integer> entry : items.entrySet()) {
             stringBuilder.append(String.format(
@@ -82,7 +81,6 @@ public class Cart {
             ));
         }
         stringBuilder.append("}");
-
         return stringBuilder.toString();
     }
 

@@ -1,6 +1,9 @@
 
 package lv.javaguru.java2.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -8,6 +11,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "categories")
+@Getter
+@Setter
+@ToString
 public class Category implements BaseEntity {
 
     @Column(name = "id")
@@ -16,60 +22,24 @@ public class Category implements BaseEntity {
     private long id;
 
     @Column(name = "name")
-
     private String name;
 
     @Column(name = "father_id")
-
     private long fatherId;
-
-    public Category() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getFatherId() {
-        return fatherId;
-    }
-
-    public void setFatherId(long fatherId) {
-        this.fatherId = fatherId;
-    }
-
-    @Override
-    public String toString() {
-        return "Category{" + "id=" + id + ", name='" + name + "',fid= " + fatherId + '}';
-    }
 
     @Override
     public boolean equals(final Object object) {
         if (this == object) {
             return true;
         }
-
         if ((object == null) || !(object instanceof Category)) {
             return false;
         }
-
         Category that = (Category) object;
-
         return new EqualsBuilder()
                 .append(id, that.getId())
                 .append(name, that.getName())
+                .append(fatherId, that.getFatherId())
                 .isEquals();
     }
 
@@ -78,6 +48,7 @@ public class Category implements BaseEntity {
         return new HashCodeBuilder()
                 .append(id)
                 .append(name)
+                .append(fatherId)
                 .toHashCode();
     }
 }

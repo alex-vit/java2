@@ -1,5 +1,8 @@
 package lv.javaguru.java2.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -7,6 +10,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "visitors_counter")
+@Getter
+@Setter
+@ToString
 public class CountVisitor implements BaseEntity, CountEntity {
 
     @Column(name="id")
@@ -22,44 +28,6 @@ public class CountVisitor implements BaseEntity, CountEntity {
 
     @Column(name = "ip")
     private String ip;
-
-    public CountVisitor(){
-
-    }
-
-    @Override
-    public long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
-
-    public int getCounter() {
-        return counter;
-    }
-
-    public void setCounter(int counter) {
-        this.counter = counter;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
 
     @Override
     public boolean equals(Object o) {
