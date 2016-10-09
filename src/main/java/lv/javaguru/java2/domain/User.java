@@ -1,5 +1,8 @@
 package lv.javaguru.java2.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,67 +12,32 @@ public class User implements BaseEntity {
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
+    @Setter
     private long id;
 
+    @Getter
+    @Setter
     @Column(name = "name")
     private String fullName;
 
+    @Getter
+    @Setter
     @Column(name = "email")
     private String email;
 
+    @Getter
+    @Setter
     @Column(name = "password")
     private String password;
 
+    @Getter
+    @Setter
     @Column(name = "is_admin")
     private boolean isAdmin;
 
     public User() {
-    }
 
-    public User(String fullName, String email, String password) {
-        this.fullName = fullName;
-        this.email = email;
-        this.password = password;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email= email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
     }
 
     @Override
@@ -78,9 +46,9 @@ public class User implements BaseEntity {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         if (id != user.id) return false;
-        if (!fullName.equals(user.fullName)) return false;
-        if (!email.equals(user.email)) return false;
-        return password.equals(user.password);
+        if (!fullName.equals(user.getFullName())) return false;
+        if (!email.equals(user.getEmail())) return false;
+        return password.equals(user.getPassword());
     }
 
     @Override

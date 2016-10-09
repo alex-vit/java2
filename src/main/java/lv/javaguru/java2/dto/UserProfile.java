@@ -16,7 +16,7 @@ public class UserProfile {
     @Getter
     @Setter
     private String repeatPassword;
-    
+
     @Override
     public String toString() {
         return "UserProfile{" +

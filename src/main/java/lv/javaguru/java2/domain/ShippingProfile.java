@@ -1,5 +1,7 @@
 package lv.javaguru.java2.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 import javax.persistence.*;
@@ -11,75 +13,34 @@ public class ShippingProfile implements BaseEntity {
     @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
+    @Setter
     private long id;
 
     @Column(name = "user_id")
+    @Getter
+    @Setter
     private long userId;
 
     @Column(name = "person")
+    @Getter
+    @Setter
     private String person;
 
     @Column(name = "document")
+    @Getter
+    @Setter
     private String document;
 
     @Column(name = "address")
+    @Getter
+    @Setter
     private String address;
 
     @Column(name = "phone")
+    @Getter
+    @Setter
     private String phone;
-
-    public ShippingProfile() {
-    }
-
-    @Override
-    public long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public String getPerson() {
-        return person;
-    }
-
-    public void setPerson(String person) {
-        this.person = person;
-    }
-
-    public String getDocument() {
-        return document;
-    }
-
-    public void setDocument(String document) {
-        this.document = document;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     @Override
     public String toString() {
@@ -101,7 +62,6 @@ public class ShippingProfile implements BaseEntity {
         ShippingProfile other = (ShippingProfile) object;
 
         return new EqualsBuilder()
-                //.append(this.getId(), other.getId())
                 .append(this.getAddress(), other.getAddress())
                 .append(this.getPerson(), other.getPerson())
                 .append(this.getDocument(), other.getDocument())
