@@ -2,9 +2,11 @@ package lv.javaguru.java2.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class ShippingDetails {
     private long id;
     private String person;
@@ -12,14 +14,4 @@ public class ShippingDetails {
     private String address;
     private String phone;
 
-    @Override
-    public String toString() {
-        return "ShippingDetails{" +
-                "id=" + id +
-                ", person='" + person + '\'' +
-                ", document='" + document + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
-    }
 }

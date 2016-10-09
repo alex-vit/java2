@@ -2,9 +2,11 @@ package lv.javaguru.java2.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class UserProfile {
 
     private String fullName;
@@ -12,13 +14,4 @@ public class UserProfile {
     private String password;
     private String repeatPassword;
 
-    @Override
-    public String toString() {
-        return "UserProfile{" +
-                "fullName='" + fullName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", repeatPassword='" + repeatPassword + '\'' +
-                '}';
-    }
 }

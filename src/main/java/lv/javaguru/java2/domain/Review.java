@@ -2,6 +2,7 @@ package lv.javaguru.java2.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -10,6 +11,7 @@ import java.util.Date;
 
 @Getter
 @Setter
+@ToString
 @Entity
 @Table(name = "reviews")
 public class Review implements BaseEntity {
@@ -34,17 +36,6 @@ public class Review implements BaseEntity {
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
     private Date date;
-
-    @Override
-    public String toString() {
-        return "Review{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", productId=" + productId +
-                ", review='" + review + '\'' +
-                ", date=" + date +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {

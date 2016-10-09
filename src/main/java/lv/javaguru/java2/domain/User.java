@@ -2,6 +2,7 @@ package lv.javaguru.java2.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Table(name = "users")
 @Getter
 @Setter
+@ToString
 public class User implements BaseEntity {
 
     @Column(name = "id")
@@ -46,14 +48,5 @@ public class User implements BaseEntity {
         result = 31 * result + email.hashCode();
         result = 31 * result + password.hashCode();
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "fullName='" + fullName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
     }
 }

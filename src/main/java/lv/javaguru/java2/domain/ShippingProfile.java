@@ -2,12 +2,14 @@ package lv.javaguru.java2.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
+@ToString
 @Entity
 @Table(name = "shipping_profiles")
 public class ShippingProfile implements BaseEntity {
@@ -31,18 +33,6 @@ public class ShippingProfile implements BaseEntity {
 
     @Column(name = "phone")
     private String phone;
-
-    @Override
-    public String toString() {
-        return "ShippingProfile{" +
-                "id=" + id + '\'' +
-                ",person='" + person + '\'' +
-                ", document='" + document + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", userId='" + userId + '\'' +
-                '}';
-    }
 
     @Override
     public boolean equals(Object object) {

@@ -2,6 +2,7 @@ package lv.javaguru.java2.domain.order;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lv.javaguru.java2.domain.BaseEntity;
 import lv.javaguru.java2.domain.interfaces.LockedResource;
 
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@ToString
 @Entity
 @Table(name = "orders")
 public class Order implements BaseEntity, LockedResource {

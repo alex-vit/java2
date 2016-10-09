@@ -2,6 +2,7 @@ package lv.javaguru.java2.domain.order;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lv.javaguru.java2.domain.BaseEntity;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
@@ -10,6 +11,7 @@ import java.util.Date;
 
 @Getter
 @Setter
+@ToString
 @Entity
 @Table(name = "order_lines")
 public class OrderLine implements BaseEntity {
@@ -70,19 +72,5 @@ public class OrderLine implements BaseEntity {
         result = 31 * result + (int) (price ^ (price >>> 32));
         result = 31 * result + (int) (quantity ^ (quantity >>> 32));
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderLine{" +
-                "id=" + id +
-                //", orderId=" + orderId +
-                ", productId=" + productId +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
-                ", expireDate=" + expireDate +
-                '}';
     }
 }

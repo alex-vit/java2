@@ -2,6 +2,7 @@ package lv.javaguru.java2.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lv.javaguru.java2.crossdomain.StatisticLine;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 
 @Getter
 @Setter
+@ToString
 @Entity
 @Table(name = "products")
 public class Product implements BaseEntity {
@@ -97,17 +99,6 @@ public class Product implements BaseEntity {
                 .append(price)
                 .append(categoryId)
                 .toHashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "Product {"
-                + "id: " + id + ", "
-                + "name: " + name + ", "
-                + "description: " + description + ", "
-                + "price: " + price + ", "
-                + "categoryId: " + categoryId
-                + "}";
     }
 
 }
