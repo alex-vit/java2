@@ -88,12 +88,12 @@ public class ProductORMDAOImplTest extends CrudHybernateDAOTest<Product, Product
     public void getRandomProductWithoutCurrentCategoryIdTest(){
         List<Product> list = createListWith15Product();
         Product product = list.get(random.nextInt(15));
-        long categoryId = product.getCategoryID();
+        long categoryId = product.getCategoryId();
         System.out.println("id " + categoryId);
         for(int i = 0; i < 15; i++){
             Product fromDAO = productDAO.getRandomProductWithoutCurrentCategoryId(categoryId);
             System.out.println("from dao id "+fromDAO.getId());
-            assertTrue(categoryId != fromDAO.getCategoryID());
+            assertTrue(categoryId != fromDAO.getCategoryId());
         }
     }
 
