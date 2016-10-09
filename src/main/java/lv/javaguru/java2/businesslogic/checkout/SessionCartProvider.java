@@ -1,5 +1,7 @@
 package lv.javaguru.java2.businesslogic.checkout;
 
+import lombok.Getter;
+import lombok.Setter;
 import lv.javaguru.java2.domain.Cart;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -9,20 +11,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class SessionCartProvider implements CartProvider {
 
+    @Getter
+    @Setter
     private Cart cart;
 
     public SessionCartProvider(){
         this.cart = new Cart();
-    }
-
-    @Override
-    public Cart getCart() {
-        return cart;
-    }
-
-    @Override
-    public void setCart(Cart cart) {
-        this.cart = cart;
     }
 
     @Override

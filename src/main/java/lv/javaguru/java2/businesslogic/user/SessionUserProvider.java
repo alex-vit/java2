@@ -1,5 +1,7 @@
 package lv.javaguru.java2.businesslogic.user;
 
+import lombok.Getter;
+import lombok.Setter;
 import lv.javaguru.java2.domain.User;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -9,14 +11,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class SessionUserProvider implements UserProvider {
 
+    @Getter
+    @Setter
     private User user;
 
-    public User getUser() {
-        return user;
-    }
-    public void setUser(User user) {
-        this.user = user;
-    }
     public boolean authorized() {
         return user != null;
     }

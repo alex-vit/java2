@@ -8,10 +8,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class UserProfile {
-
     private String fullName;
     private String email;
     private String password;
     private String repeatPassword;
-
 }
