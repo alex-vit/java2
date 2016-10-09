@@ -31,6 +31,11 @@ public class Stock implements BaseEntity {
     private Date expireDate;
 
 
+    public void substractQuantity(int quantity) {
+        this.quantity -= quantity;
+    }
+
+
     @Override
     public boolean equals(final Object object) {
         if (this == object) {

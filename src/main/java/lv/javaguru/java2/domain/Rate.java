@@ -1,5 +1,8 @@
 package lv.javaguru.java2.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -7,6 +10,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "rate")
+@Getter
+@Setter
+@ToString
 public class Rate implements BaseEntity {
 
     @Column(name = "id")
@@ -23,37 +29,6 @@ public class Rate implements BaseEntity {
     @Column(name = "rate")
     private int rate;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
-
-    public int getRate() {
-        return rate;
-    }
-
-    public void setRate(int rate) {
-        this.rate = rate;
-    }
 
     @Override
     public boolean equals(Object o) {

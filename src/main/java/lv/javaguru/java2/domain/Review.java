@@ -1,5 +1,8 @@
 package lv.javaguru.java2.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -8,6 +11,9 @@ import java.util.Date;
 
 @Entity
 @Table(name = "reviews")
+@Getter
+@Setter
+@ToString
 public class Review implements BaseEntity {
 
     @Column(name = "id")
@@ -30,65 +36,6 @@ public class Review implements BaseEntity {
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
     public Date date;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
-
-    public String getReview() {
-        return review;
-    }
-
-    public void setReview(String comment) {
-        this.review = comment;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    @Override
-    public String toString() {
-        return "Review{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", productId=" + productId +
-                ", review='" + review + '\'' +
-                ", date=" + date +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {
