@@ -1,5 +1,8 @@
 package lv.javaguru.java2.domain.order;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import lv.javaguru.java2.domain.BaseEntity;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
@@ -9,6 +12,9 @@ import java.util.Date;
 
 @Entity
 @Table(name = "order_lines")
+@Getter
+@Setter
+@ToString(exclude = "order")
 public class OrderLine implements BaseEntity {
     @Column(name = "id")
     @Id
@@ -32,70 +38,6 @@ public class OrderLine implements BaseEntity {
     @Column(name = "expire_date")
     @Temporal(TemporalType.DATE)
     private Date expireDate;
-
-    public Order getOrder() {
-        return this.order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public long getPrice() {
-        return price;
-    }
-
-    public void setPrice(long price) {
-        this.price = price;
-    }
-
-    public long getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(long quantity) {
-        this.quantity = quantity;
-    }
-
-    public Date getExpireDate() {
-        return expireDate;
-    }
-
-    public void setExpireDate(Date expireDate) {
-        this.expireDate = expireDate;
-    }
 
     @Override
     public boolean equals(Object object) {
@@ -123,19 +65,5 @@ public class OrderLine implements BaseEntity {
         result = 31 * result + (int) (price ^ (price >>> 32));
         result = 31 * result + (int) (quantity ^ (quantity >>> 32));
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderLine{" +
-                "id=" + id +
-                ", order=" + order +
-                ", productId=" + productId +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
-                ", expireDate=" + expireDate +
-                '}';
     }
 }
