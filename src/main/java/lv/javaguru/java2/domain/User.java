@@ -1,9 +1,16 @@
 package lv.javaguru.java2.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
+@Getter
+@Setter
+@ToString
 public class User implements BaseEntity {
 
     @Column(name = "id")
@@ -23,55 +30,6 @@ public class User implements BaseEntity {
     @Column(name = "is_admin")
     private boolean isAdmin;
 
-    public User() {
-    }
-
-    public User(String fullName, String email, String password) {
-        this.fullName = fullName;
-        this.email = email;
-        this.password = password;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email= email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -90,14 +48,5 @@ public class User implements BaseEntity {
         result = 31 * result + email.hashCode();
         result = 31 * result + password.hashCode();
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "fullName='" + fullName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
     }
 }
