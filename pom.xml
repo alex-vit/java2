@@ -9,7 +9,9 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-
+    <properties>
+        <spring.version>4.3.2.RELEASE</spring.version>
+    </properties>
     <profiles>
         <profile>
             <id>preprod</id>
@@ -18,20 +20,25 @@
             </activation>
 
             <properties>
-                <spring.version>4.3.2.RELEASE</spring.version>
                 <db.schema>java2miska</db.schema>
                 <db.user>root</db.user>
                 <db.password>root</db.password>
+                <db.url>jdbc:mysql://localhost:3306/</db.url>
+                <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
+                <db.hibernateDialect>org.hibernate.dialect.MySQLDialect</db.hibernateDialect>
             </properties>
 
         </profile>
         <profile>
             <id>tests</id>
+
             <properties>
-                <spring.version>4.3.2.RELEASE</spring.version>
-                <db.schema>java2test</db.schema>
+                <db.schema>java2miska</db.schema>
                 <db.user>root</db.user>
                 <db.password>root</db.password>
+                <db.url>jdbc:h2:~/java2miskatest</db.url>
+                <db.driverClass>org.h2.Driver</db.driverClass>
+                <db.hibernateDialect>org.hibernate.dialect.H2Dialect</db.hibernateDialect>
             </properties>
         </profile>
     </profiles>
@@ -189,7 +196,18 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>4.0.3</version>
                 <configuration>
-                    <configFile>src/main/resources/database.properties</configFile>
+                    <user>${db.user}</user>
+                    <password>${db.password}</password>
+                    <url>${db.url}</url>
+                    <driver>${db.driverClass}</driver>
+                    <schemas>
+                        <schema>${db.schema}</schema>
+                    </schemas>
+                    <placeholders>
+                        <keyABC>valueXYZ</keyABC>
+                        <otherplaceholder>value123</otherplaceholder>
+                    </placeholders>
+
                 </configuration>
             </plugin>
 

@@ -1,2 +1,2 @@
-ALTER TABLE categories
-  ADD INDEX father_id (father_id);
+CREATE INDEX father_id
+  ON categories (father_id);

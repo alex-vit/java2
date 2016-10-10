@@ -1,9 +1,11 @@
-ALTER TABLE users_counter DROP FOREIGN KEY users_counter_ibfk_2;
 ALTER TABLE users_counter
-  ADD CONSTRAINT users_counter_ibfk_2
+  DROP FOREIGN KEY product_of_user_visit;
+ALTER TABLE users_counter
+  ADD CONSTRAINT product_of_user_visit
 FOREIGN KEY (product_id) REFERENCES products (id) ON DELETE CASCADE;
 
-ALTER TABLE visitors_counter DROP FOREIGN KEY visitors_counter_ibfk_1;
 ALTER TABLE visitors_counter
-  ADD CONSTRAINT visitors_counter_ibfk_1
+  DROP FOREIGN KEY product_of_visitors_visitor;
+ALTER TABLE visitors_counter
+  ADD CONSTRAINT product_of_visitors_visitor
 FOREIGN KEY (product_id) REFERENCES products (id) ON DELETE CASCADE;
