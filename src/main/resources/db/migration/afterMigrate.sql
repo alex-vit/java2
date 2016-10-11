@@ -1,18 +1,4 @@
-USE java2miska;
-
-DELETE FROM products;
-DELETE FROM categories;
-DELETE FROM users;
-DELETE FROM order_lines;
-DELETE FROM orders;
-DELETE FROM shipping_profiles;
-DELETE FROM users_counter;
-DELETE FROM visitors_counter;
-
-ALTER TABLE categories
-  AUTO_INCREMENT = 1;
-ALTER TABLE products
-  AUTO_INCREMENT = 1;
+USE ${db.schema};
 
 INSERT INTO users (name, email, password, is_admin)
 VALUES ('Administrator',
@@ -161,6 +147,7 @@ INSERT INTO stock (product_id, quantity, expire_date)
     '2017-01-22'
   FROM products;
 
+
 INSERT INTO reviews (product_id, user_id, user_name, review, date)
   SELECT
     products.id,
@@ -169,8 +156,7 @@ INSERT INTO reviews (product_id, user_id, user_name, review, date)
      WHERE name = "Administrator"),
     "Adm",
     "review",
-    (SELECT sysdate()
-     FROM dual)
+    '2016-01-01'
   FROM products;
 
 INSERT INTO rate (product_id, user_id, rate)

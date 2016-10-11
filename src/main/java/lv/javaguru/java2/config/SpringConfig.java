@@ -63,11 +63,12 @@ public class SpringConfig {
             @Value("${driverClass}") String driver,
             @Value("${dbBaseUrl}") String url,
             @Value("${dbSchema}") String schema,
+            @Value("${dbParams}") String dbParams,
             @Value("${userName}") String user,
             @Value("${password}") String password) throws PropertyVetoException {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(driver);
-        dataSource.setUrl(url + schema);
+        dataSource.setUrl(url + schema + dbParams);
         dataSource.setUsername(user);
         dataSource.setPassword(password);
         dataSource.setDefaultAutoCommit(false);

@@ -12,37 +12,6 @@
     <properties>
         <spring.version>4.3.2.RELEASE</spring.version>
     </properties>
-    <profiles>
-        <profile>
-            <id>preprod</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-
-            <properties>
-                <db.schema>java2miska</db.schema>
-                <db.user>root</db.user>
-                <db.password>root</db.password>
-                <db.url>jdbc:mysql://localhost:3306/</db.url>
-                <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
-                <db.hibernateDialect>org.hibernate.dialect.MySQLDialect</db.hibernateDialect>
-            </properties>
-
-        </profile>
-        <profile>
-            <id>tests</id>
-
-            <properties>
-                <db.schema>java2miska</db.schema>
-                <db.user>root</db.user>
-                <db.password>root</db.password>
-                <db.url>jdbc:h2:~/java2miskatest</db.url>
-                <db.driverClass>org.h2.Driver</db.driverClass>
-                <db.hibernateDialect>org.hibernate.dialect.H2Dialect</db.hibernateDialect>
-            </properties>
-        </profile>
-    </profiles>
-
 
     <repositories>
         <repository>
@@ -168,6 +137,37 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>preprod</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <db.schema>java2miska</db.schema>
+                <db.user>root</db.user>
+                <db.password>root</db.password>
+                <db.url>jdbc:mysql://localhost:3306/</db.url>
+                <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
+                <db.hibernateDialect>org.hibernate.dialect.MySQLDialect</db.hibernateDialect>
+                <db.params></db.params>
+            </properties>
+
+        </profile>
+        <profile>
+            <id>tests</id>
+            <properties>
+                <db.schema>java2miskatest</db.schema>
+                <db.user>root</db.user>
+                <db.password>root</db.password>
+                <db.url>jdbc:mysql://localhost:3306/</db.url>
+                <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
+                <db.hibernateDialect>org.hibernate.dialect.MySQLDialect</db.hibernateDialect>
+                <db.params></db.params>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <finalName>java2</finalName>
         <plugins>
@@ -204,22 +204,26 @@
                         <schema>${db.schema}</schema>
                     </schemas>
                     <placeholders>
-                        <keyABC>valueXYZ</keyABC>
-                        <otherplaceholder>value123</otherplaceholder>
+                        <db.schema>${db.schema}</db.schema>
                     </placeholders>
-
                 </configuration>
+                <executions>
+                    <execution>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>clean</goal>
+                            <goal>migrate</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
-
         </plugins>
-
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
-
     </build>
 
 </project>
